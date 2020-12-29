@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tugas</title>
+    <style>
+        h1,
+        h3 {
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-image: url(bg.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        label {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .container {
+            width: 40%;
+            margin: 0 auto;
+            background: rgb(43, 182, 115);
+            background: linear-gradient(90deg, rgba(43, 182, 115, 1) 20%, rgba(37, 181, 131, 1) 32%, rgba(0, 174, 239, 1) 100%);
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 10%;
+            margin-top: 3%;
+        }
+
+        .pt15 {
+            padding-top: 15px;
+        }
+
+        .putih {
+            color: #fff;
+        }
+
+        .hr {
+            border: 1px solid black;
+        }
+
+        form {
+            padding: 25px;
+            /* background-color: salmon; */
+            max-width: 30%;
+            margin: 0 auto;
+        }
+
+        .input {
+            border-radius: 5px;
+            box-shadow: 2px 2px #888888;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            padding: 10px;
+            width: 100%;
+            margin: 5px 0;
+        }
+
+        .button {
+            font-weight: bold;
+            font-size: 1.5rem;
+            background-color: #d9d9d9;
+            border-radius: 5px;
+            box-shadow: 2px 2px #8888;
+            border: none;
+            font-size: 1rem;
+            margin-top: 20px;
+            padding: 20px;
+            width: 110%;
+            justify-self: start;
+        }
+
+        .button:hover {
+            background-color: salmon;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="center" id="pesan">Portal Login PT Cinta Damai</h1>
+        <form onsubmit="return false" id="form">
+            <label>Masukkan Username: </label>
+            <br>
+            <input type="text" class="input" id="username" placeholder="guest" autofocus autocomplete="off" />
+            <br><br>
+            <label>Masukkan Password: </label>
+            <br>
+            <input type="password" class="input" id="password" placeholder="guest" placeholder="Harga Satuan"
+                autocomplete="off" />
+            <br><br>
+            <br>
+            <button id="submit" class="button" type="submit">Login</button>
+        </form>
+
+        <div id="clear">
+            <hr class="hr" />
+            <h3>Informasi Login:</h3>
+            <h4 class="putih">Akun Guest</h4>
+            <h3>Username : guest</h3>
+            <h3>password: guest</h3>
+            <br>
+            <h4 class="putih">Akun Admin</h4>
+            <h3>Username : 201843501985</h3>
+            <h3>password: 201843501985</h3>
+            <br>
+            <span class="putih">Note*: Sistem Validasi Login menggunakan proses javascript </span>
+            <br>
+            <br>
+        </div>
+        <h3 class="pt15">&copy 2020 Muhamad Rifqi pratama 201843501985 </h3>
+    </div>
+</body>
+
+<script>
+    // jika tombol submit ditekan tampilkan hasil nya
+    document.getElementById("submit").
+        addEventListener("click", validasi);
+
+    function validasi() {
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+
+        if (username != "" && password != "") {
+            let guest = "guest";
+            let pwguest = "guest";
+            let admin = "201843501985";
+            let pwadmin = "201843501985";
+            if (username == guest && password == pwguest) {
+                document.getElementById("pesan").innerHTML = "Halo Guest, Selamat Datang di Portal PT Cinta Damai! <br><br> <button style='font-weight: bold;font-size: 1.5rem;background-color: #d9d9d9;border-radius: 5px;box-shadow: 2px 2px #8888;border: none;font-size: 1rem;margin-top: 20px;padding: 20px;width: 40%;justify-self: start; ' onclick='location.reload(); '>Logout</button>";
+                document.getElementById("form").innerHTML = "";
+                document.getElementById("clear").innerHTML = "";
+            } else if (username == admin && password == pwadmin) {
+                let output = "Halo Muhamad Rifqi pratama, Selamat Datang di Portal PT Cinta Damai! <br><br> ";
+                output += "<h5 style='text-align: left;'>Informasi Akun </h5>";
+                output += "<h5 style='text-align: left;'>Nama : Muhamad Rifqi pratama</h5>";
+                output += "<h5 style='text-align: left;'>Username : 201843501985</h5>";
+                output += "<h5 style='text-align: left;'>Kelas : S5R</h5>";
+                output += "<h5 style='text-align: left;'>Nomer HP : 085887366065</h5>";
+                output += "<h5 style='text-align: left;'>Email : rifqipratama3008@gmail.com</h5><br>";
+
+                output += "<button style='font-weight: bold;font-size: 1.5rem;background-color: #d9d9d9;border-radius: 5px;box-shadow: 2px 2px #8888;border: none;font-size: 1rem;margin-top: 20px;padding: 20px;width: 40%;justify-self: start; ' onclick='location.reload(); '>Logout</button>";
+                document.getElementById("pesan").innerHTML = output;
+
+                document.getElementById("form").innerHTML = "";
+                document.getElementById("clear").innerHTML = "";
+
+            } else {
+                document.getElementById("pesan").innerHTML = "<h3>Maaf Akun Kamu Tidak Terdaftar atau Username dan Password Salah</h3> <br> <span style='color:yellow;'> Mohon untuk me-refresh halaman ini dan mencoba login kembali</span>";
+                document.getElementById("form").innerHTML = "";
+                document.getElementById("clear").innerHTML = "";
+            }
+        } else {
+            alert('Anda harus mengisi Portal dengan lengkap !');
+        }
+
+    }
+
+</script>
+
+</html>
